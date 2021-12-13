@@ -13,7 +13,12 @@ const resolversAvance = {
       return avanceFiltrado;
     },
 
-    
+    filtrarAvanceUnico: async (parents, args) => {
+      const avanceUnicoFiltrado = await AdvancementModel.find({ _id: args._id })
+        .populate({path:'proyecto'})
+        .populate({path:'creadoPor'});
+      return avanceUnicoFiltrado;
+    },
 
   },
   Mutation: {
